@@ -3998,6 +3998,18 @@ eval(userInput);</textarea>
             updateTOTPCode();
             setInterval(updateTOTPCode, 1000);
         });
-    </script>
+ </script>
+<script>
+(function(){
+  const ns = "mustafa-cybershield-2026";
+  const day = "day-" + new Date().toISOString().slice(0,10);
+  try { localStorage.setItem("cs_local_visits", String((parseInt(localStorage.getItem("cs_local_visits")||"0",10))+1)); } catch(e){}
+  if(!sessionStorage.getItem("cs_counted")){
+    sessionStorage.setItem("cs_counted","1");
+    fetch("https://api.counterapi.dev/v1/" + encodeURIComponent(ns) + "/total/up", { mode: "cors", cache: "no-store" }).catch(()=>{});
+    fetch("https://api.counterapi.dev/v1/" + encodeURIComponent(ns) + "/" + day + "/up", { mode: "cors", cache: "no-store" }).catch(()=>{});
+  }
+})();
+</script>
 </body>
 </html>
