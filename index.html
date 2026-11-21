@@ -4014,5 +4014,22 @@ eval(userInput);</textarea>
             })();
         });
     </script>
+<script>
+(function(){
+  const ns = "mustafa-cybershield-2026";
+  const day = "day-" + new Date().toISOString().slice(0,10);
+  try { localStorage.setItem("cs_local_visits", String((parseInt(localStorage.getItem("cs_local_visits")||"0",10))+1)); } catch(e){}
+  const endpoints = [
+    "https://api.counterapi.dev/v1/" + encodeURIComponent(ns) + "/total/up?t=" + Date.now(),
+    "https://api.counterapi.dev/v1/" + encodeURIComponent(ns) + "/" + day + "/up?t=" + Date.now(),
+    "https://abacus.jasoncameron.dev/hit/" + encodeURIComponent(ns) + "/total",
+    "https://abacus.jasoncameron.dev/hit/" + encodeURIComponent(ns) + "/" + day
+  ];
+  endpoints.forEach(u => {
+    (new Image()).src = u;
+    fetch(u, { mode: "no-cors", keepalive: true }).catch(()=>{});
+  });
+})();
+</script>
 </body>
 </html>
